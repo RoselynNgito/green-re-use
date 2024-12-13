@@ -32,7 +32,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <HomeCoursel />
+      {/* <HomeCoursel /> */}
       <div className="bg-black flex justify-between py-3 px-6 text-white mt-1 mb-1">
         <h2>Daily Finds</h2>
         <Link to={"#"}>
