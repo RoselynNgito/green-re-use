@@ -122,7 +122,7 @@ const HomeMain = () => {
             everytime for we can fight together againts food waste .see how
             peoplpe out there are fighting food waste by visiting our blog page.
           </p>
-          <Button>Learn More</Button>
+          {/* <Button>Learn More</Button> */}
         </div>
       </div>
 
