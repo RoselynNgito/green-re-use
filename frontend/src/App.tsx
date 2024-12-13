@@ -13,6 +13,7 @@ import AddProduct from "./admin/pages/AddProduct";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ViewAllProducts from "./admin/pages/ViewAllProducts";
+import HomeMain from "./pages/HomeMain";
 
 const App = () => {
   return (
@@ -21,6 +22,15 @@ const App = () => {
       <Routes>
         <Route
           path="/"
+          element={
+            <DefaultLayout>
+              <HomeMain />
+            </DefaultLayout>
+          }
+        />
+        {/* market  */}
+        <Route
+          path="/market"
           element={
             <DefaultLayout>
               <Home />

@@ -9,7 +9,7 @@ export function NavbarHeader() {
     <div className="h-14">
       <Navbar fluid rounded className="shadow fixed w-full z-50">
         <Navbar.Brand href="/">
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white uppercase">
+          <span className="self-center whitespace-nowrap text-green-400 text-xl font-semibold dark:text-white uppercase">
             Green Re-use
           </span>
         </Navbar.Brand>
@@ -43,6 +43,9 @@ export function NavbarHeader() {
         <Navbar.Collapse>
           <Link to={"/"}>
             <Navbar.Link active={pathname === "/"}>Home</Navbar.Link>
+          </Link>
+          <Link to={"/market"}>
+            <Navbar.Link active={pathname === "/market"}>Market</Navbar.Link>
           </Link>
 
           <Link to={"/cart"}>
