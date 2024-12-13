@@ -1,4 +1,3 @@
-import { HomeCoursel } from "../components/HomeCoursel";
 import { Link } from "react-router-dom";
 import { ProductCard } from "../components/ProductCard";
 import { useEffect, useState } from "react";
