@@ -52,9 +52,9 @@ export function NavbarHeader() {
             <Navbar.Link active={pathname === "/cart"}>Cart</Navbar.Link>
           </Link>
 
-          <Link to={"/orders"}>
+          {/* <Link to={"/orders"}>
             <Navbar.Link active={pathname === "/orders"}>Orders</Navbar.Link>
-          </Link>
+          </Link> */}
 
           <Link to={"/about"}>
             <Navbar.Link active={pathname === "/about"}>About us</Navbar.Link>
