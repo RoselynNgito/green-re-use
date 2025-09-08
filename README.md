@@ -1,39 +1,49 @@
 # 🌍 Green Reuse – Eco-Conscious Waste Management Platform
 
-Green Reuse is a digital platform designed to promote sustainable practices, streamline organic waste management, and provide an intuitive marketplace for eco-friendly products. The system empowers both administrators and customers by combining efficient operations with user-friendly features, contributing to a greener future.
+Green Reuse is a digital platform designed to promote sustainable practices, streamline organic waste management, and provide an intuitive marketplace for eco-friendly products. The system empowers users and administrators alike, blending ease of use with operational efficiency.
 
 ---
 
-## ✨ Get Started
-The Green Reuse platform is an **Eco-Conscious System** that integrates waste management with sustainability-focused shopping.  
+## Solution Overview
+- **Customers**: Browse eco-friendly products, enjoy seamless checkout, and receive order confirmations.
+- **Administrators**: Manage products, track inventory and orders, and maintain smooth operations all in real time.
 
-- 🛒 **For Customers**:  
-  - Browse eco-friendly products through a product catalog with detailed descriptions and high-quality images.  
-  - Create accounts for personalized experiences.  
-  - Use a seamless cart and checkout process.  
-  - Receive order confirmation emails for trust and transparency.  
-
-- 🛠️ **For Administrators**:  
-  - Manage products (add, update, remove).  
-  - Monitor inventory and track orders.  
-  - Ensure smooth operations with real-time insights.  
-
-By combining these functionalities, Green Reuse enhances the shopping experience, streamlines waste management processes, and contributes to sustainable practices.
+By integrating these functionalities, Green Reuse enhances the shopping and waste management experience while promoting sustainability.
 
 ---
 
-## 📌 Project Scope
-- Comprehensive digital platform focused on **organic waste management**.  
-- Marketplace for **buying and selling organic waste**.  
-- Educational resources to raise awareness about sustainable waste handling.  
-- Standardized waste disposal procedures for consistency.  
-- Built-in **regulatory compliance checks** for accountability.  
-- Optimized resource utilization to minimize inefficiencies.  
-- A user-friendly hub that fosters a **community of sustainability advocates**.  
-- Improved operational efficiency for organizations and individuals.  
-- Reduced environmental impact through eco-conscious practices.  
+## Project Scope
+- Organic waste-focused digital platform  
+- Marketplace for buying and selling green products  
+- Educational resources on proper waste handling  
+- Standardized disposal procedures and regulatory compliance  
+- Efficient resource tracking with minimized duplication  
+- Community-driven, user-friendly interface  
+- Eco-conscious operational improvements for reduced environmental impact  
 
-To run this project locally:
+---
+
+## Technologies Used
+### Frontend
+- React (with Vite)
+- JavaScript / TypeScript
+- Axios (for API calls)
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB (via Mongoose)
+- Authentication: JWT, bcrypt
+- File Uploads: Multer, Cloudinary
+- Email Support: Nodemailer
+- Security: Helmet, CORS
+
+### Database
+- MongoDB (via Mongoose)
+
+
+
+### To run this project locally:
 
 1. **Clone the repository**
    ```bash
