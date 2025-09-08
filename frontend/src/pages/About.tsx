@@ -6,9 +6,21 @@ const About = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-800">About Us</h1>
+          <h1 className="text-4xl font-bold text-gray-800">Who we are</h1>
           <p className="text-gray-600 mt-4">
-            Your trusted partner in providing the best e-commerce experience.
+          Garbage Dump Communities are, most simply put, the communities
+              that rely on the world’s garbage dumps to survive by either
+              working or living within them. The families that we work with
+              specifically make their living as “recyclers” or “pickers”,
+              combing through the garbage by hand and finding items to sell or
+              keep. Those who live here have to be incredibly resilient because
+              this way of life does not pay well: nearly all garbage dump
+              community members live on less than $2 a day, putting them below
+              the United Nation’s line for extreme poverty. Living in garbage
+              dump communities also has extreme adverse effects on both physical
+              and mental health, combined with extremely high barriers to access
+              to healthcare, education, proper food and shelter, and employment
+              opportunities outside the garbage dump.
           </p>
         </div>
 
@@ -33,14 +45,15 @@ const About = () => {
         {/* History Section */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
-            Our Story
+            Scope of project
           </h2>
           <p className="text-gray-600 text-center max-w-3xl mx-auto">
-            Founded in 2020, we started as a small team passionate about
-            revolutionizing online shopping. Today, we’ve grown into a leading
-            e-commerce platform, trusted by thousands of customers worldwide.
-            From humble beginnings to a thriving company, we’ve always
-            prioritized quality, innovation, and customer satisfaction.
+          The scope of the website entails creating awareness and providing comprehensive 
+            information on sustainable methods for managing green waste, with a primary focus 
+            on Thika Sub-county. Additionally, it offers a secondary coverage of green waste management 
+            practices in Nairobi, Kenya, and the global context. The website features a dynamic marketplace 
+            where users can conveniently buy and sell various green waste products, facilitating a circular 
+            economy and promoting resource utilization. 
           </p>
         </div>
 

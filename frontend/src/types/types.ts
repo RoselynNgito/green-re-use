@@ -2,6 +2,8 @@ export interface ProductType {
   _id: string;
   title: string;
   price: number;
+  quantity: number;
+  scale: string;
   description: string;
   category: string;
   image: string;

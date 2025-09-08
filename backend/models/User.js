@@ -1,65 +1,49 @@
 import mongoose from "mongoose";
-import validator from "validator";
-import bcrypt from "bcrypt";
-import Jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
-const UserSchema = new mongoose.Schema(
-  {
-    fullName: {
-      type: String,
-      trim: true,
-    },
-    email: {
-      type: String,
-      required: [true, "Please provide an email"],
-      validate: {
-        validator: validator.isEmail,
-        message: "Please provide a valid email",
-      },
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: [true, "Please provide a password"],
-      select: false,
-    },
-    phoneNumber: {
-      type: String,
-      maxlength: 20,
-      trim: true,
-      default: "+2547",
-    },
-    profileImage: {
-      type: Object,
-      default: {
-        imageUrl:
-          "https://res.cloudinary.com/df23q280l/image/upload/f_auto,q_auto/w2iewy0nbrglimrsqpyd",
-        id: "w2iewy0nbrglimrsqpyd",
-      },
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
-    },
+// Define User Schema
+const UserSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: [true, "Username is required"],
+    trim: true,
+    unique: true,
   },
-  { timestamps: true }
-);
-
-UserSchema.pre("save", async function () {
-  if (!this.isModified("password")) return;
-  const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
+  email: {
+    type: String,
+    required: [true, "Email is required"],
+    unique: true,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: [true, "Password is required"],
+  },
 });
 
-UserSchema.methods.createJWT = function () {
-  return Jwt.sign({ userId: this._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_LIFETIME,
-  });
+// Hash the password before saving
+UserSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next(); // Only hash if password is modified
+  console.log("Password before hashing:", this.password);
+
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+
+  console.log("Hashed password:", this.password);
+  next();
+});
+
+// Compare password method
+UserSchema.methods.comparePassword = async function (password) {
+  console.log("Password from request:", password);
+  console.log("Hashed password in DB:", this.password);
+
+  const isMatch = await bcrypt.compare(password, this.password);
+  console.log("Password Match:", isMatch);
+
+  return isMatch;
 };
 
-UserSchema.methods.comparePassword = async function (candidatePassword) {
-  const passwordMatch = await bcrypt.compare(candidatePassword, this.password);
-  return passwordMatch;
-};
+const User = mongoose.model("User", UserSchema);
 
-export default mongoose.model("User", UserSchema);
+export default User;

@@ -6,6 +6,21 @@ const mpesaStkPush = async (req, res, next) => {
     const token = req.token;
     const { phone, amount, cart } = req.body;
 
+    // Validate amount
+    if (!amount || isNaN(amount) || amount <= 0) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        msg: "Invalid amount",
+      });
+    }
+
+    // Validate phone number
+    if (!phone) {
+      return res.status(StatusCodes.BAD_REQUEST).json({
+        msg: "Phone number is required",
+      });
+    }
+
+    // Format phone number
     function formatNumberForMpesa(number) {
       const formattedNumber = number.replace(/\D/g, "");
 
@@ -20,6 +35,12 @@ const mpesaStkPush = async (req, res, next) => {
       return "254" + formattedNumber;
     }
 
+    // Debugging logs
+    console.log("Request body:", req.body);
+    console.log("Formatted phone number:", formatNumberForMpesa(phone));
+    console.log("Amount being sent:", amount.toFixed(0));
+
+    // Send STK push request
     const response = await axios.post(
       "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest",
       {
@@ -42,13 +63,13 @@ const mpesaStkPush = async (req, res, next) => {
         },
       }
     );
-    console.log(response.data);
+    console.log("M-Pesa Response:", response.data);
 
     res.status(StatusCodes.OK).json({
       msg: "Payment initiated, enter your m-pesa pin to complete transaction",
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error during M-Pesa STK push:", error.response?.data || error);
     next(error);
   }
 };

@@ -1,39 +1,49 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/User.js";
-import AttachCookie from "../utils/AttachCookie.js";
+import bcrypt from "bcrypt";
 
 const RegisterUser = async (req, res) => {
-  const { fullName, email, password } = req.body;
   try {
-    if (!fullName || !email || !password) {
-      res
+    // Log the incoming request body
+    console.log("Incoming Request Body:", req.body);
+
+    const { username, email, password } = req.body; // Changed `fullName` to `username`
+
+    // Validate input
+    if (!username || !email || !password) {
+      return res
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "Please provide all values" });
-      return;
     }
 
+    // Check if the user already exists
     const userExists = await User.findOne({ email });
     if (userExists) {
-      res
+      return res
         .status(StatusCodes.BAD_REQUEST)
         .json({ message: "Email already exists" });
-      return;
     }
 
-    const user = await User.create({ fullName, email, password });
+    // Hash the password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
-    const token = user.createJWT();
-    AttachCookie({ res, token });
+    // Create the user
+    const user = await User.create({
+      username, // Changed `fullName` to `username`
+      email,
+      password: hashedPassword,
+    });
 
+    // Respond with user details (no token involved)
     res.status(StatusCodes.CREATED).json({
       user: {
-        fullName: user.fullName,
+        username: user.username, // Changed `fullName` to `username`
         email: user.email,
       },
-      token,
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error during registration:", error);
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .json({ message: "An error occurred while registering" });

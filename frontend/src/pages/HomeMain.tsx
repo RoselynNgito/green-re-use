@@ -17,7 +17,7 @@ const HomeMain = () => {
             Green Waste Management
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            We aim at empowering peole to take an initiative to prevent further
+            We aim at empowering people to take an initiative to prevent further
             degradation of the environment by employing sustainable methods
             while disposing of green waste.
           </p>
@@ -28,11 +28,11 @@ const HomeMain = () => {
             COGNITIVE
           </h5>
           <h5 className="text-xl text-slate-600 italic font-bold tracking-tight  dark:text-white">
-            Artificial intelligence
+          Smart Waste Management Framework
           </h5>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            With our integrated Watson chatbot, we provide a dynamic platform
-            aimed at spreading awareness about green waste management.
+          The system analyzes organic waste data to identify types, predict decomposition, and recommend reuse strategies. 
+          Using advanced algorithms, it adapts dynamically to inputs, ensuring efficient processing, minimal waste, and optimal resource recovery.
           </p>
         </Card>
 
@@ -72,9 +72,7 @@ const HomeMain = () => {
           page on our website.
         </p>
 
-        <div className="flex justify-end mt-5">
-          <Button>To Market</Button>
-        </div>
+        
       </div>
 
       <div className="bg-green-100 shadow mt-5 p-7 flex flex-col gap-3">

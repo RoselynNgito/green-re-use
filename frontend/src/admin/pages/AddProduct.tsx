@@ -6,11 +6,13 @@ import RichTextEditorTinyMCE from "../components/RichTextEditorTinyMCE";
 import { useAppDispatch, useAppSelector } from "../../app/hooks/redux-hooks";
 import { createProductService } from "../../app/services/product-service";
 import { useEffect } from "react";
+import { HiScale } from "react-icons/hi";
 
 //product schema created by yup
 let productSchema = yup.object({
   name: yup.string().required("Product Name is Required"),
   price: yup.string().required("Product price is required"),
+  scale: yup.string().required("Weighing scale is required"),
   description: yup.string().required("Product description is required"),
   category: yup.string().required("Category is required"),
   cover_image: yup.string().required("Cover image is required"),
@@ -79,6 +81,7 @@ const AddProduct = () => {
     initialValues: {
       name: "",
       price: "",
+      scale: "",
       description: "",
       category: "",
       cover_image: "",
@@ -150,10 +153,34 @@ const AddProduct = () => {
             />
           </div>
 
+{/* property scale  */}
+<div>
+            <div className="mb-2 block">
+              <Label htmlFor="Weighing-scale" value="Weighing scale" />
+            </div>
+            <TextInput
+              id="Weighing-scale"
+              type="text"
+              placeholder="Enter Weighing scale"
+              {...formik.getFieldProps("scale")}
+              color={
+                formik.touched.scale && formik.errors.scale
+                  ? "failure"
+                  : undefined
+              }
+              helperText={
+                formik.touched.scale && formik.errors.scale
+                  ? formik.errors.scale
+                  : ""
+              }
+            />
+          </div>
+
+
           {/* property area  */}
           <div className="max-w-md">
             <div className="mb-2 block">
-              <Label htmlFor="property-category" value="Property Category" />
+              <Label htmlFor="property-category" value="Waste Category" />
             </div>
             <Select
               id="property-category"
@@ -171,7 +198,7 @@ const AddProduct = () => {
               }
             >
               <option>Please Select Area</option>
-              {["Garbage", "Groceries", "Fruits", "Food"].map((d, i) => {
+              {["Garden", "Groceries", "Fruits", "Food"].map((d, i) => {
                 return (
                   <option key={i} value={d}>
                     {d}

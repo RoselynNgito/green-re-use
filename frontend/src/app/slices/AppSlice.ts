@@ -19,19 +19,18 @@ const AppSlice = createSlice({
   reducers: {
     setProductsReducer: (state, action) => {
       state.products = action.payload;
-      console.log(action.payload);
     },
 
-    //function to add to product to cart
+    // Add product to cart
     addProductToCart: (state, action) => {
       return {
         ...state,
-        cart: [...state.cart, action.payload],
+        cart: [...state.cart, { ...action.payload, quantity: 1 }],
         cartIds: [...state.cartIds, action.payload._id],
       };
     },
 
-    //function to remove from cart
+    // Remove product from cart
     removeProductFromCart: (state, action) => {
       const newCart = state.cart.filter(
         (product) => product._id !== action.payload
@@ -43,10 +42,26 @@ const AppSlice = createSlice({
         cartIds: newCartIds,
       };
     },
+
+    // Update product quantity
+    updateProductQuantity: (state, action) => {
+      const { productId, quantity } = action.payload;
+      const updatedCart = state.cart.map((product) =>
+        product._id === productId ? { ...product, quantity } : product
+      );
+      return {
+        ...state,
+        cart: updatedCart,
+      };
+    },
   },
 });
 
-export const { setProductsReducer, addProductToCart, removeProductFromCart } =
-  AppSlice.actions;
+export const {
+  setProductsReducer,
+  addProductToCart,
+  removeProductFromCart,
+  updateProductQuantity,
+} = AppSlice.actions;
 
 export default AppSlice.reducer;

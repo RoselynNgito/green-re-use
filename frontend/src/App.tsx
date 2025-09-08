@@ -14,6 +14,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ViewAllProducts from "./admin/pages/ViewAllProducts";
 import HomeMain from "./pages/HomeMain";
+import Signup from "./pages/Signup"; // Updated import
+import Login from "./pages/Login";   // Updated import
 
 const App = () => {
   return (
@@ -76,6 +78,24 @@ const App = () => {
           <Route path="add-product" element={<AddProduct />} />
           <Route path="all-products" element={<ViewAllProducts />} />
         </Route>
+
+        {/* Updated Signup and Login Routes */}
+        <Route
+          path="/signup"
+          element={
+            <DefaultLayout>
+              <Signup />
+            </DefaultLayout>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <DefaultLayout>
+              <Login />
+            </DefaultLayout>
+          }
+        />
       </Routes>
     </Provider>
   );

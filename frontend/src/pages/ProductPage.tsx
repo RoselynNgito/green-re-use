@@ -80,6 +80,11 @@ const ProductPage = () => {
                     {product?.price && Number(product.price).toLocaleString()}
                   </h1>
 
+                  <h1 className="text-2xl font-semibold">
+                    Weight{" "}
+                    {product?.scale && String(product.scale).toLocaleString()}
+                  </h1>
+
                   <span className="text-xs text-green-500">In Stock</span>
 
                   <h5 className="text-xs">
@@ -219,18 +224,18 @@ const ProductPage = () => {
                 <h1>Choose your location</h1>
                 <div className="max-w-md mt-4">
                   <Select required>
-                    <option>Select your country</option>
-                    <option>Canada</option>
-                    <option>France</option>
-                    <option>Germany</option>
+                    <option>Select your county</option>
+                    <option>Kiambu</option>
+                    <option>Nairobi</option>
+                    <option>Mombasa</option>
                   </Select>
                 </div>
                 <div className="max-w-md mt-4">
                   <Select required>
                     <option>CBD - UON/Globe/Koja/River</option>
-                    <option>Canada</option>
-                    <option>France</option>
-                    <option>Germany</option>
+                    <option>Kiambu</option>
+                    <option>Nairobi</option>
+                    <option>Mombasa</option>
                   </Select>
                 </div>
               </div>
